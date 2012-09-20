@@ -1,16 +1,18 @@
 settings = {
 
     'file_dir'  : '/Users/matthew/pylib/dbfiles/files',
-    'db_file'   : '/Users/matthew/pylib/dbfiles/db/data.fs',
+    'db_file'   : '/Users/matthew/pylib/dbfiles/db/data.db',
 }
 
-from ZODB.FileStorage import FileStorage
-from ZODB.DB import DB
-storage = FileStorage(settings['db_file'])
-db = DB(storage)
-connection = db.open()
-root = connection.root()
-import transaction
+#sqlalchemy init
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+engine = create_engine('sqlite:///{}'.format(settings['db_file']))
+Base = declarative_base(engine)
+Session = sessionmaker(bind=engine)
+
+#package init
 import utils
 import models
 import upload
