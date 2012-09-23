@@ -2,9 +2,14 @@ import os
 import hashlib
 from persistent import Persistent
 from .. import utils, Base
-from sqlalchemy import Column, event
+from sqlalchemy import Column, event, ForeignKey
 from sqlalchemy.types import String, Integer
 from sqlalchemy.orm import relationship, backref
+
+files_people = Table('files_people', Base.metadata,
+    Column('file_id', Integer(), ForeignKey('files.id')),
+    Column('person_id', Integer(), ForeignKey('people.id'))
+)
 
 class FileError(Exception):
     def __init__(self, value):
@@ -14,10 +19,11 @@ class FileError(Exception):
 
 class File(Base):
     __tablename__ = 'files' 
-    id = Column(Integer(), primary_key=True)
-    sha1 = Column(String(40), nullable=False, unique=True)
+    id = Column(Integer(), primary_key = True)
+    sha1 = Column(String(40), nullable = False, unique = True)
     name = Column(String(255))
     ext = Column(String(255))
+    people = relationship("Person", secondary = files_people, backref="files")
 
     def __init__(self, sha1):
         self.sha1 = sha1
