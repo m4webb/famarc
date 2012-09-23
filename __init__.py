@@ -1,7 +1,7 @@
 settings = {
 
-    'file_dir'  : '/Users/matthew/pylib/dbfiles/files',
-    'db_file'   : '/Users/matthew/pylib/dbfiles/db/data.db',
+    'file_dir'  : '/Users/matthew/pylib/famarc/files',
+    'db_file'   : '/Users/matthew/pylib/famarc/db/data.db',
 }
 
 #sqlalchemy init
