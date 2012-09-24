@@ -1,6 +1,6 @@
 import os
 import hashlib
-from . import settings
+from . import file_dir 
 
 class Sha1Error(Exception):
     def __init__(self, value):
@@ -19,7 +19,7 @@ def sha1_to_spath(sha1):
     if len(sha1) != 40:
         raise ValueError('Bad sha1 code.')
     else:
-        return os.path.join(settings['file_dir'],sha1[:2],sha1[2:])
+        return os.path.join(file_dir,sha1[:2],sha1[2:])
 
 def sha1_exists(sha1):
     '''

@@ -1,5 +1,6 @@
 import os
-from . import utils, Base
+from .. import utils
+from . import Base
 from sqlalchemy import Column, event, ForeignKey, Table
 from sqlalchemy.types import String, Integer
 from sqlalchemy.orm import relationship, backref
