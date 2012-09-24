@@ -1,4 +1,5 @@
+import contacts
+import places
+import people
 import files
 import tags
-import people
-import places

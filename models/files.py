@@ -2,7 +2,7 @@ import os
 import hashlib
 from persistent import Persistent
 from .. import utils, Base
-from sqlalchemy import Column, event, ForeignKey
+from sqlalchemy import Column, event, ForeignKey, Table
 from sqlalchemy.types import String, Integer
 from sqlalchemy.orm import relationship, backref
 

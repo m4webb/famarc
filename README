@@ -1,2 +1,3 @@
-dbfiles is a collection of python scripts to interface between the database and
-the filesystem.
+famarc - family archives
+
+A database in which family archives may be stored.
