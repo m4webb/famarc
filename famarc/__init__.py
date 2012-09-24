@@ -13,9 +13,3 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.scan()
     return config.make_wsgi_app()
-
-settings = {
-
-    'file_dir'  : '/Users/matthew/pylib/famarc/files',
-    'db_file'   : '/Users/matthew/pylib/famarc/db/data.db',
-}

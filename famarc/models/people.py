@@ -1,4 +1,4 @@
-from .. import Base
+from . import Base
 from sqlalchemy import Column, ForeignKey, event, Table
 from sqlalchemy.types import String, Integer, DateTime, Boolean
 from sqlalchemy.orm import relationship, backref

@@ -1,4 +1,4 @@
-from .. import Base
+from . import Base
 from sqlalchemy import Table, Column, ForeignKey
 from sqlalchemy.types import String, Integer
 from sqlalchemy.orm import relationship, backref

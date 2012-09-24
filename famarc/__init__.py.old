@@ -1,3 +1,9 @@
+settings = {
+
+    'file_dir'  : '/Users/matthew/pylib/famarc/files',
+    'db_file'   : '/Users/matthew/pylib/famarc/db/data.db',
+}
+
 #sqlalchemy init
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -10,3 +16,5 @@ Session = sessionmaker(bind=engine)
 import utils
 import models
 import upload
+
+
