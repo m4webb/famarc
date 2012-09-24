@@ -1,0 +1,5 @@
+      [paste.app_factory]
+      main = famarc:main
+      [console_scripts]
+      initialize_famarc_db = famarc.scripts.initializedb:main
+      
