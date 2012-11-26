@@ -1,4 +1,4 @@
-file_dir = '/home/matthew/fafiles'
+file_dir = '/Users/matthew/pylib/famarc/data/'
 
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
@@ -12,6 +12,8 @@ def main(global_config, **settings):
     DBSession.configure(bind=engine)
     config = Configurator(settings=settings)
     config.add_static_view('static', 'static', cache_max_age=3600)
-    config.add_route('home', '/')
+    config.add_route('file_upload', '/')
+    config.add_route('file_write', '/file_write')   
+    config.add_route('files', '/files')   
     config.scan()
     return config.make_wsgi_app()

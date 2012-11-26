@@ -5,9 +5,43 @@ from sqlalchemy.exc import DBAPIError
 
 from .models import (
     DBSession,
-    MyModel,
+    files
     )
 
+import upload
+
+@view_config(
+    route_name='file_upload',
+   renderer='famarc:templates/file_upload.mak',
+)
+def file_upload(request):
+    return {}
+
+@view_config(
+    route_name='file_write',
+)
+def file_write(request):
+    upload.upload_file(request.POST['file'].filename,
+                       request.POST['file'].file,
+                       file_desc = request.POST['description'])
+    return Response('OK')
+
+@view_config(
+    route_name='files', 
+    renderer='famarc:templates/files.mak',
+)
+def file_list(request):
+    session = DBSession()
+    return {'files':session.query(files.File).all()}
+
+@view_config(
+    renderer="json", 
+    name="file_list.json",
+)
+def file_list_json(self):
+    return [file._json_() for file in DBSession().query(files.File).all()]
+
+'''
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
 def my_view(request):
     try:
@@ -31,4 +65,4 @@ might be caused by one of the following things:
 After you fix the problem, please restart the Pyramid application to
 try it again.
 """
-
+'''

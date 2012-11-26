@@ -9,11 +9,11 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 requires = [
     'pyramid',
     'SQLAlchemy',
-    'transaction',
+    #'transaction',
     'pyramid_tm',
     'pyramid_debugtoolbar',
-    'zope.sqlalchemy',
-    'waitress',
+    #'zope.sqlalchemy',
+    #'waitress',
     ]
 
 setup(name='famarc',
