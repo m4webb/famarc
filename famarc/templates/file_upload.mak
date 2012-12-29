@@ -1,6 +1,6 @@
 <%inherit file="base.mak"/>
 
-<%block name="guts">
+<%block name="content">
     <form action="/file_write" method="post" accept-charset="utf-8"
           enctype="multipart/form-data">
 

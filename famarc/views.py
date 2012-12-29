@@ -3,15 +3,21 @@ from pyramid.view import view_config
 
 from sqlalchemy.exc import DBAPIError
 
+from sqlalchemy.orm.exc import NoResultFound
+
 from .models import (
     DBSession,
-    files
+    files,
     )
+from . import (
+    utils,
+    upload,
+)
 
-import upload
+import mimetypes
 
 @view_config(
-    route_name='file_upload',
+   route_name='file_upload',
    renderer='famarc:templates/file_upload.mak',
 )
 def file_upload(request):
@@ -38,8 +44,36 @@ def file_list(request):
     renderer="json", 
     name="file_list.json",
 )
-def file_list_json(self):
+def file_list_json(request):
     return [file._json_() for file in DBSession().query(files.File).all()]
+
+@view_config(
+    renderer="json",
+    name="file_table.json",
+)
+def file_table_json(request):
+    file_list = DBSession().query(files.File).all()
+    return { "aaData" : [[f.id, f.name, f.ext, utils.datef(f.added), f.description] for f in
+                          file_list]}
+
+
+@view_config(
+    route_name="file_get",
+)
+def file_get(request):
+    try:
+        file_obj = DBSession.query(files.File).filter(files.File.id ==
+                                   int(request.matchdict['id'])).one()
+        response = Response(body=open(utils.sha1_to_spath(file_obj.sha1)).read(),
+                        content_type=mimetypes.types_map['.{}'.format(file_obj.ext.lower())],
+                        )
+        response.headerlist.append(('Content-Disposition', "filename={}.{}".format(
+                                    file_obj.name, file_obj.ext)))
+        return response
+    except NoResultFound:
+        return Response(body="No such file {}".format(
+                        request.matchdict['id']), 
+                        content_type="text/plain")
 
 '''
 @view_config(route_name='home', renderer='templates/mytemplate.pt')

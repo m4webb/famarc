@@ -25,12 +25,15 @@ famarc/models/places.py
 famarc/models/tags.py
 famarc/scripts/__init__.py
 famarc/scripts/initializedb.py
-famarc/static/famarc.css
+famarc/static/base.css
 famarc/static/favicon.ico
+famarc/static/files.css
 famarc/static/files.js
+famarc/static/files_old.js
 famarc/static/footerbg.png
 famarc/static/headerbg.png
 famarc/static/ie6.css
+famarc/static/jquery.dataTables.min.js
 famarc/static/jquery.js
 famarc/static/middlebg.png
 famarc/static/pylons.css
@@ -38,7 +41,7 @@ famarc/static/pyramid-small.png
 famarc/static/pyramid.png
 famarc/static/transparent.gif
 famarc/templates/base.mak
-famarc/templates/file_list_old.mak
 famarc/templates/file_upload.mak
 famarc/templates/files.mak
-famarc/templates/mytemplate.pt
+famarc/templates/old/file_list_old.mak
+famarc/templates/old/mytemplate.pt

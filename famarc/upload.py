@@ -27,7 +27,7 @@ def upload_file_from_path(file_path, file_desc=""):
         shutil.copy(file_path, file_spath)
         file_object = File(file_sha1)
         file_object.name = file_name
-        file_object.ext = file_ext
+        file_object.ext = file_ext.lower()
         file_object.added = datetime.now()
         file_object.description = file_desc
         session.add(file_object)
@@ -64,7 +64,7 @@ def upload_file(file_name_ext, file_, file_desc=""):
         file_out.close()
         file_object = File(file_sha1)
         file_object.name = file_name
-        file_object.ext = file_ext
+        file_object.ext = file_ext.lower()
         file_object.added = datetime.now()
         file_object.description = file_desc
         session.add(file_object)

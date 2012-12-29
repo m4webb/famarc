@@ -14,6 +14,7 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('file_upload', '/')
     config.add_route('file_write', '/file_write')   
+    config.add_route('file_get', '/files/{id:\d+}')
     config.add_route('files', '/files')   
     config.scan()
     return config.make_wsgi_app()

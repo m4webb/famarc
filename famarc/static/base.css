@@ -1,0 +1,50 @@
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote {
+    margin: 0; padding: 0; border: 0;
+}
+
+#container {
+    margin: 0 auto;
+    width: 900px;
+}
+
+#header, #content, #footer {
+    clear: both; 
+    width: 900px;
+}
+
+#header {
+    padding-top: 20px;
+    height: 40px;
+    position: fixed;
+    border-width:2px;   
+    border-bottom-style:solid;
+    overflow: hidden;
+    background-color:white;
+    z-index: 1;
+}
+
+    #header ul#nav li {
+        float: left;
+        list-style: none;
+    }
+
+    #header ul#nav li a:link, a:visited {
+        display: block;
+        width: 180px;
+        text-align: center;
+        font-size: 110%;
+        text-decoration:none;
+        text-transform:uppercase;
+        color:black;
+    }
+    #header ul#nav li a:hover,a:active {
+        color:#B8B8B8;
+    }
+    #header ul#nav li#navhome{
+    }
+
+#content { 
+    position: relative;
+    top: 60px;
+    overflow: auto;
+}

@@ -1,16 +1,22 @@
 <%inherit file="base.mak"/>
 
-
 <%block name="head">
     <title>Files</title>
-    <link rel="stylesheet" type="text/css" href="/static/famarc.css">
-    <script src="/static/jquery.js"></script>
+    ${parent.head()}
+    <link rel="stylesheet" type="text/css" href="/static/files.css">
     <script src="/static/files.js"></script>
 </%block>
 
-<%block name="guts">
+<%block name="content">
     <table id="file_table">
         <thead>
+            <tr>
+                <th class="id">Id</th>
+                <th>Name</th>
+                <th>Ext</th>
+                <th>Added</th>
+                <th>Description</th>
+            </tr>
         </thead>
         <tbody>
         </tbody>

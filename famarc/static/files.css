@@ -1,0 +1,50 @@
+table {
+    width: 900px;
+    border-collapse:collapse;
+    cursor:default;
+}
+
+thead { 
+    position: static;
+    top: 60px;
+    width: 900px;
+}
+
+tbody { 
+}
+
+th.emph {
+    font-weight: bold;
+}
+
+th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 8px;
+	border-bottom: 2px solid;
+    text-align: left;
+}
+
+td
+{
+	border-bottom: 1px solid #B8B8B8;
+	padding: 6px 8px;
+}
+
+tbody tr:hover td
+{
+	color: #B8B8B8;
+}
+
+#file_table_filter { 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#file_table_filter input { 
+    width: 80%;
+}
