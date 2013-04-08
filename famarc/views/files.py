@@ -10,11 +10,64 @@ from ..models import (
 from .. import (
     utils,
     upload,
+    ObjectLookup,
 )
 
 from ..exceptions import FamarcBaseException
 
+from sqlalchemy import func
+
+from sqlalchemy.sql.expression import or_
+
 import mimetypes
+
+#------------------------------------------------------------------------------#
+
+@view_config(
+    context=ObjectLookup, 
+    name='', 
+    renderer='famarc:templates/files.mak',
+)
+def files_list(request):
+    return {}
+
+#------------------------------------------------------------------------------#
+
+@view_config(
+    context=ObjectLookup, 
+    name="data.json",
+    renderer="json",
+)
+def file_data(request):
+
+    #Count all records
+    json_response = {}
+    json_response["iTotalRecords"] = DBSession.query(func.count(files.File.id)
+                                                    ).one()[0]
+
+    #Filter
+    query = DBSession.query(files.File)
+    query = query.filter(or_(
+        files.File.name.like("%{}%".format(request.POST['sSearch'])),
+        files.File.description.like("%{}%".format(request.POST['sSearch'])),
+        files.File.ext.like("%{}%".format(request.POST['sSearch'])),
+    ))
+
+    #Count filtered records
+    json_response["iTotalDisplayRecords"] = query.count()
+
+    #Slice
+    slice_start = int(request.POST['iDisplayStart'])
+    slice_len = int(request.POST['iDisplayLength'])
+    query = query.slice(slice_start, slice_start+slice_len)
+
+    #Get data and finalize
+    file_list = query.all()
+    json_response["aaData"] = [[f.id, f.name, f.ext, utils.datef(f.added),
+                                f.description] for f in file_list]
+    json_response["sEcho"] = str(int(request.POST['sEcho']))
+
+    return json_response
 
 #------------------------------------------------------------------------------#
 
@@ -67,6 +120,7 @@ def file_tags_json(request):
     return { "tags" : [[t.name] for t in request.context.tags]}
 
 #------------------------------------------------------------------------------#
+
 
 """
 @view_config(
