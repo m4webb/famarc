@@ -36,7 +36,7 @@ tbody tr:hover td
 	color: #B8B8B8;
 }
 
-#file_table_filter { 
+#tags_table_filter { 
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
@@ -44,6 +44,6 @@ tbody tr:hover td
     text-align: center;
 }
 
-#file_table_filter input { 
+#tags_table_filter input { 
     width: 50%;
 }

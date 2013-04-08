@@ -1,9 +1,9 @@
 //on load
 $(function() {
 
-    $('#file_table').dataTable( {
+    $('#tags_table').dataTable( {
         "bProcessing" : true,
-        "sAjaxSource" : "/file_table.json",
+        "sAjaxSource" : "/tags_table.json",
         "sDom" : 'ftr',
         "sScrollY": "400px", 
         "bPaginate": false,
@@ -14,7 +14,7 @@ $(function() {
             ],
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
             $(nRow).click( function() {
-                window.open('/files/' + $(nRow).find('.id').html(), "_self");
+                window.open('/tags/' + $(nRow).find('.id').html(), "_self");
             });
             //$('td', nRow).attr('nowrap', 'nowrap');
             return nRow;

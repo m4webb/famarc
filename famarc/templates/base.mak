@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/static/base.css">
     <script src="/static/jquery.js"></script>
     <script src="/static/jquery.dataTables.min.js"></script>
+    <script src="/static/jquery.dataTables.plugins.js"></script>
 </%block>
 </head>
 

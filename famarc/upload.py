@@ -3,8 +3,10 @@ import shutil
 import hashlib 
 from . import utils
 from .models.files import File
+from .models.tags import Tag
 from . import DBSession
 from datetime import datetime
+from sqlalchemy.orm.exc import NoResultFound
 
 def upload_file_from_path(file_path, file_desc=""):
     """
@@ -86,3 +88,14 @@ def upload_files(file_paths):
         res.append(upload_file(file_path, **kwargs))
     return res
 """
+
+
+def addtag(file_id, tag_name):
+    session = DBSession()
+    file_obj = session.query(File).filter(File.id == file_id).one()
+    try:
+        tag = session.query(Tag).filter(Tag.name == tag_name).one()
+    except NoResultFound:
+        tag = Tag(tag_name)
+        session.add(tag)
+    file_obj.tags.append(tag)

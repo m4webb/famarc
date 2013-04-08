@@ -53,6 +53,9 @@ class File(Base):
             'tags'          : [tag._json_() for tag in self.tags],
         }
 
+    def read(self):
+        return open(utils.sha1_to_spath(self.sha1)).read()
+
     def symlink(self, path):
         """
         Create a symbolic link to this file at <path>.
