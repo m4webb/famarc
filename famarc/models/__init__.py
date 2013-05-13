@@ -5,8 +5,9 @@ from zope.sqlalchemy import ZopeTransactionExtension
 Base = declarative_base()
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 
+import secondary
+import tags
 import contacts
+import files
 import places
 import people
-import files
-import tags

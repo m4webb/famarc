@@ -1,14 +1,10 @@
 import os
 from .. import utils
 from . import Base
+from secondary import *
 from sqlalchemy import Column, event, ForeignKey, Table
 from sqlalchemy.types import String, Integer, DateTime
 from sqlalchemy.orm import relationship, backref
-
-files_people = Table('files_people', Base.metadata,
-    Column('file_id', Integer(), ForeignKey('files.id')),
-    Column('person_id', Integer(), ForeignKey('people.id'))
-)
 
 class FileError(Exception):
     def __init__(self, value):
@@ -24,7 +20,7 @@ class File(Base):
     ext = Column(String(255))
     description = Column(String(2047))
     added = Column(DateTime())
-    people = relationship("Person", secondary = files_people, backref="files")
+    tags = relationship("Tag", secondary = tags_files, backref="files")
 
     def __init__(self, sha1):
         self.sha1 = sha1

@@ -10,8 +10,9 @@ from ..models import (
 from .. import (
     utils,
     upload,
-    ObjectLookup,
 )
+
+from ..traversal import ObjectLookup
 
 from ..exceptions import FamarcBaseException
 

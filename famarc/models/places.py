@@ -1,6 +1,8 @@
 from . import Base
+from secondary import *
 from sqlalchemy import Column
 from sqlalchemy.types import String, Integer, Float
+from sqlalchemy.orm import relationship
 
 class Place(Base):
     __tablename__ = 'places'
@@ -13,3 +15,7 @@ class Place(Base):
     country = Column(String(2))
     longitutde = Column(Float())
     latitude = Column(Float())
+    tags = relationship("Tag", secondary = tags_places, backref="places")
+
+    def __repr__(self):
+        return "<Place({})>".format(id)

@@ -6,7 +6,9 @@ production.ini
 setup.cfg
 setup.py
 famarc/__init__.py
+famarc/exceptions.py
 famarc/tests.py
+famarc/traversal.py
 famarc/upload.py
 famarc/utils.py
 famarc.egg-info/PKG-INFO
@@ -21,6 +23,7 @@ famarc/models/contacts.py
 famarc/models/files.py
 famarc/models/people.py
 famarc/models/places.py
+famarc/models/secondary.py
 famarc/models/tags.py
 famarc/scripts/__init__.py
 famarc/scripts/initializedb.py
@@ -52,4 +55,5 @@ famarc/templates/tags.mak
 famarc/templates/old/file_list_old.mak
 famarc/templates/old/mytemplate.pt
 famarc/views/__init__.py
+famarc/views/exceptions.py
 famarc/views/files.py

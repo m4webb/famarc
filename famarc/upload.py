@@ -89,7 +89,6 @@ def upload_files(file_paths):
     return res
 """
 
-
 def addtag(file_id, tag_name):
     session = DBSession()
     file_obj = session.query(File).filter(File.id == file_id).one()
